@@ -1,55 +1,58 @@
-import React, { Component } from "react";
-import logo from "./logo.svg";
-import "./App.css";
-
-import { fetchRequest } from "./api/fetchRequest";
+import React, { Component, Fragment } from "react";
+import { Header } from "components/Header";
+import { Results } from "components/Results";
+import { Filters } from "components/Filters";
+import { AppWrapper, Container, GlobalStyles } from "./styles";
 
 class App extends Component {
   state = {
     location: "London, Uk",
-    max_distance: 50,
+    max_distance: 1000,
     number_of_months: 12,
     number_of_weeks: 52,
     order_by: "price",
     order_direction: "asc",
     page: 1,
     per_page: 15,
-    price_max: 2500,
     price_min: 100,
+    price_max: 2500,
     rolling: false,
+    number_of_seats_min: 1,
+    number_of_seats_max: 8,
     start_date: "09/09/2018",
-    vehicle_type: "Consumer"
+    vehicle_type: "Consumer",
+    vehicle_make: "Toyota"
   };
 
-  componentDidMount() {
-    console.log(
-      "Fetch Component",
-      fetchRequest({
-        url: "web/vehicles",
-        method: "POST",
-        body: this.state
-      })
-    );
-  }
+  handlePageChange = direction => {
+    const { page } = this.state;
+    this.setState({ page: direction === "next" ? page + 1 : page - 1 });
+  };
+
+  handleFilterChange = ({ key, value }) => {
+    this.setState({ [key]: value });
+  };
 
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <Fragment>
+        <GlobalStyles />
+        <AppWrapper>
+          <Header />
+          <Container>
+            <Filters
+              data={this.state}
+              onFilterChange={({ key, value }) =>
+                this.handleFilterChange({ key, value })
+              }
+            />
+            <Results
+              data={this.state}
+              onPageChange={direction => this.handlePageChange(direction)}
+            />
+          </Container>
+        </AppWrapper>
+      </Fragment>
     );
   }
 }

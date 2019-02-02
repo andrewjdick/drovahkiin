@@ -1,14 +1,15 @@
 const BASE_URL = "https://app.joindrover.com/api";
 
 function onFetchResponse(response) {
-  const headerType = response.headers.get("Content-Type");
-  const isJSON = headerType && headerType.includes("application/json");
-
   if (!response.ok) {
     throw new Error("There was a problem with the fetch request");
   }
 
-  return isJSON ? response.json() : response.text();
+  return response.json();
+}
+
+function onFetchSuccess(response) {
+  return response;
 }
 
 export function fetchRequest({ url, method = "GET", body = {}, headers = {} }) {
@@ -23,11 +24,7 @@ export function fetchRequest({ url, method = "GET", body = {}, headers = {} }) {
     ...headers
   };
 
-  const requestBody = requestHeaders["content-type"].includes(
-    "application/json"
-  )
-    ? JSON.stringify(body)
-    : body;
+  const requestBody = JSON.stringify(body);
 
   return fetch(requestUrl, {
     method,
@@ -35,5 +32,6 @@ export function fetchRequest({ url, method = "GET", body = {}, headers = {} }) {
     headers: requestHeaders
   })
     .then(onFetchResponse)
+    .then(onFetchSuccess)
     .catch(error => console.error(error));
 }
