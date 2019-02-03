@@ -27,7 +27,7 @@ export const Pagination = styled.div`
   justify-content: center;
   align-items: center;
   padding: 1em;
-  margin-top: 1em;
+  margin: 2em 0;
 `;
 
 export const PaginationButton = styled.input`

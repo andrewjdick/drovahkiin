@@ -57,6 +57,8 @@ export class Results extends React.Component {
             ? "Searching for cars..."
             : total_count === 0
             ? "No cars available"
+            : total_count === 1
+            ? `${total_count} car available`
             : `${total_count} cars available`}
         </ResultsAvailable>
 

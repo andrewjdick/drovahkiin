@@ -1,7 +1,6 @@
 import React from "react";
 import { string, func, bool } from "prop-types";
-import { InputFilter } from "components/filters";
-import { SelectFilter } from "components/filters";
+import { InputFilter, SelectFilter } from "components/filters";
 import {
   VEHICLE_MAKE_OPTIONS,
   TRANSMISSION_OPTIONS,
