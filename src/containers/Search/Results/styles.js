@@ -5,7 +5,8 @@ export const ResultsWrapper = styled.section`
   flex-direction: column;
   flex: 1;
   padding: 0.5em;
-  overflow: auto;
+  overflow: scroll;
+  -webkit-overflow-scrolling: touch;
 `;
 
 export const ResultsAvailable = styled.h1`
