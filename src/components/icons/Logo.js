@@ -1,15 +1,14 @@
 import React from "react";
 
-export const Logo = () => (
+export const Logo = ({ width, height }) => (
   <svg
     id="Layer_1"
     data-name="Layer 1"
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 542.4 96.48"
-    width="140px"
-    height="25px"
+    width={width}
+    height={height}
   >
-    <title>Drover logo</title>
     <path
       fill="#000000"
       d="M157.11,94.55l-33-36.91h-13.4V94.55H95.88V1.94h43.54q14.24,0,23,7.67t8.78,20.25q0,11.88-8,19.42T142,57.5l33.45,37.05ZM139.42,44.23q7.61,0,12.3-3.94a12.93,12.93,0,0,0,4.7-10.43,13.16,13.16,0,0,0-4.7-10.51q-4.69-4-12.3-4H110.67V44.23Z"
@@ -36,3 +35,8 @@ export const Logo = () => (
     />
   </svg>
 );
+
+Logo.defaultProps = {
+  width: 140,
+  height: 25
+};

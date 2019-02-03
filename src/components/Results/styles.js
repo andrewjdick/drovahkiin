@@ -1,17 +1,17 @@
 import styled from "styled-components";
 
-export const ResultsAvailable = styled.h1`
-  padding: 0.5em;
-  font-size: 2rem;
-  line-height: 2.5rem;
-`;
-
 export const ResultsWrapper = styled.section`
   display: flex;
   flex-direction: column;
   flex: 1;
   padding: 0.5em;
   overflow: auto;
+`;
+
+export const ResultsAvailable = styled.h1`
+  padding: 0.5em;
+  font-size: 2rem;
+  line-height: 2.5rem;
 `;
 
 export const ResultWrapper = styled.div`
@@ -31,10 +31,11 @@ export const Pagination = styled.div`
 `;
 
 export const PaginationButton = styled.input`
+  appearance: none;
   margin: 1em;
   padding: 10px 20px;
-  appearance: none;
   transition: all 400ms;
+  border: 1px solid black;
 
   &:hover:not(:disabled) {
     background-color: whitesmoke;

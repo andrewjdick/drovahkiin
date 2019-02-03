@@ -23,6 +23,11 @@ export const Result = ({ data }) => {
     <ResultContainer>
       <ResultWrapper bgImage={bgImage}>
         <CarInfo>
+          {/**
+           * I found the API for the monnthly price to be confusing.
+           * With no obvious value I've hard coded it in for now.
+           * I assume it would be something like the total cost / number of months
+           **/}
           <CarPrice>£300</CarPrice>
           <CarPrice>a month</CarPrice>
         </CarInfo>

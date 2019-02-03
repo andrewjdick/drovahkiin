@@ -63,10 +63,9 @@ export class Results extends React.Component {
         </ResultsAvailable>
 
         <ResultWrapper isLoading={isLoading}>
-          {data.map((result, index) => {
-            console.log({ result });
-            return <Result data={result} key={index} />;
-          })}
+          {data.map((result, index) => (
+            <Result data={result} key={index} />
+          ))}
         </ResultWrapper>
 
         {!isLoading && totalPages > 1 && (

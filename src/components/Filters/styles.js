@@ -1,21 +1,36 @@
 import styled from "styled-components";
+import { media } from "media.js";
 
 export const FiltersWrapper = styled.aside`
-  flex: 0 1 25%;
-  display: flex;
-  flex-direction: column;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   padding: 1em;
-  min-height: 100%;
+  background-color: white;
+  z-index: 1;
+
+  display: ${({ isMobileNavigationOpen }) =>
+    isMobileNavigationOpen ? "none" : "block"};
+
+  ${media.desktop`
+    flex: 0 1 25%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    min-height: 100%;
+  `};
 `;
 
 export const FilterWrapper = styled.div`
   padding: 1em 0;
+  max-width: 50%;
 `;
 
-export const MultiFilterWrapper = styled.div`
+export const MultiFilterWrapper = styled(FilterWrapper)`
   display: flex;
   flex-direction: column;
-  padding: 1em 0;
 `;
 
 export const MultiFilterLabel = styled.label`
@@ -25,4 +40,11 @@ export const MultiFilterLabel = styled.label`
 
 export const MultiFilterInputs = styled.div`
   display: flex;
+
+  * + * {
+    input,
+    label {
+      margin-left: 1rem;
+    }
+  }
 `;

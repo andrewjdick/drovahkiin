@@ -10,4 +10,8 @@ export const StyledLabel = styled.label`
   font-weight: bold;
 `;
 
-export const StyledInput = styled.input``;
+export const StyledInput = styled.input`
+  border-style: solid;
+  border-color: grey;
+  padding: 0.5em 1em;
+`;

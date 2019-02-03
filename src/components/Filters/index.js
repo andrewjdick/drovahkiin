@@ -13,8 +13,8 @@ import {
   MultiFilterInputs
 } from "./styles";
 
-export const Filters = ({ data, onFilterChange }) => (
-  <FiltersWrapper>
+export const Filters = ({ data, onFilterChange, isMobileNavigationOpen }) => (
+  <FiltersWrapper isMobileNavigationOpen={isMobileNavigationOpen}>
     <FilterWrapper>
       <SelectFilter
         label="Vehicle Make"
