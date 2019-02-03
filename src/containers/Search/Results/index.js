@@ -1,5 +1,6 @@
 import React from "react";
 import { func, object } from "prop-types";
+import { debounce } from "throttle-debounce";
 import { fetchRequest } from "api/fetchRequest";
 import { Result } from "components/Result";
 import {
@@ -13,22 +14,28 @@ import {
 } from "./styles";
 
 export class Results extends React.Component {
-  state = {
-    metadata: {},
-    data: [],
-    isLoading: true
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      metadata: {},
+      data: [],
+      isLoading: true
+    };
+    this.getFilteredVehiclesDebounced = debounce(500, this.getFilteredVehicles);
+  }
 
   componentDidMount() {
     const { data } = this.props;
-    this.getFilteredVehicles(data);
+    this.getFilteredVehiclesDebounced(data);
   }
 
   componentDidUpdate(prevProps) {
     const { data } = this.props;
 
     if (prevProps.data !== data) {
-      this.setState({ isLoading: true }, () => this.getFilteredVehicles(data));
+      this.setState({ isLoading: true }, () =>
+        this.getFilteredVehiclesDebounced(data)
+      );
     }
   }
 
