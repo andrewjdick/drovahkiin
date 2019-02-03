@@ -21,7 +21,10 @@ export const Filters = ({ data, onFilterChange }) => (
         options={VEHICLE_MAKE_OPTIONS}
         selected={data.vehicle_make}
         onChange={event =>
-          onFilterChange({ key: "vehicle_make", value: event.target.value })
+          onFilterChange({
+            key: "vehicle_make",
+            value: event.target.value
+          })
         }
       />
     </FilterWrapper>
@@ -33,6 +36,7 @@ export const Filters = ({ data, onFilterChange }) => (
           id="price_min"
           label="Min"
           type="number"
+          min="0"
           defaultValue={data.price_min}
           onInput={event =>
             onFilterChange({
@@ -45,6 +49,7 @@ export const Filters = ({ data, onFilterChange }) => (
           id="price_max"
           label="Max"
           type="number"
+          min="1"
           defaultValue={data.price_max}
           onInput={event =>
             onFilterChange({
@@ -62,7 +67,10 @@ export const Filters = ({ data, onFilterChange }) => (
         options={TRANSMISSION_OPTIONS}
         selected={data.transmission}
         onChange={event =>
-          onFilterChange({ key: "transmission", value: event.target.value })
+          onFilterChange({
+            key: "transmission",
+            value: event.target.value
+          })
         }
       />
     </FilterWrapper>
@@ -88,6 +96,7 @@ export const Filters = ({ data, onFilterChange }) => (
           id="number_of_seats_min"
           label="Min"
           type="number"
+          min="0"
           defaultValue={data.number_of_seats_min}
           onInput={event =>
             onFilterChange({
@@ -100,6 +109,7 @@ export const Filters = ({ data, onFilterChange }) => (
           id="number_of_seats_max"
           label="Max"
           type="number"
+          min="1"
           defaultValue={data.number_of_seats_max}
           onInput={event =>
             onFilterChange({
