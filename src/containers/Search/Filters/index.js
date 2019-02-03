@@ -30,7 +30,7 @@ export const Filters = ({
       <SelectFilter
         label="Vehicle Make"
         options={VEHICLE_MAKE_OPTIONS}
-        selected={vehicle_make}
+        defaultValue={vehicle_make}
         onChange={event =>
           onFilterChange({
             key: "vehicle_make",
@@ -76,7 +76,7 @@ export const Filters = ({
       <SelectFilter
         label="Transmission"
         options={TRANSMISSION_OPTIONS}
-        selected={transmission}
+        defaultValue={transmission}
         onChange={event =>
           onFilterChange({
             key: "transmission",
@@ -90,7 +90,7 @@ export const Filters = ({
       <SelectFilter
         label="Max Distance"
         options={MAX_DISTANCE_OPTIONS}
-        selected={max_distance}
+        defaultValue={max_distance}
         onChange={event =>
           onFilterChange({
             key: "max_distance",
