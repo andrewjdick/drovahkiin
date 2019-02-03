@@ -2,8 +2,10 @@ import React from "react";
 import { fetchRequest } from "api/fetchRequest";
 import { Result } from "components/Result";
 import {
+  ResultsAvailable,
   ResultsWrapper,
   ResultWrapper,
+  PaginationText,
   PaginationButton,
   Pagination
 } from "./styles";
@@ -11,7 +13,8 @@ import {
 export class Results extends React.Component {
   state = {
     metadata: {},
-    data: []
+    data: [],
+    isLoading: true
   };
 
   componentDidMount() {
@@ -21,8 +24,9 @@ export class Results extends React.Component {
 
   componentDidUpdate(prevProps) {
     const { data } = this.props;
+
     if (prevProps.data !== data) {
-      this.getFilteredVehicles(data);
+      this.setState({ isLoading: true }, () => this.getFilteredVehicles(data));
     }
   }
 
@@ -32,36 +36,57 @@ export class Results extends React.Component {
       method: "POST",
       body: vehicleData
     }).then(({ metadata, data }) =>
-      this.setState({
-        metadata: metadata,
-        data: data
-      })
+      this.setState({ metadata, data, isLoading: false })
     );
 
   render() {
     const { onPageChange } = this.props;
-    const { data } = this.state;
+    const {
+      data,
+      metadata: { total_count, per_page, page },
+      isLoading
+    } = this.state;
+
+    const totalPages = Math.ceil(total_count / per_page);
+    const isPrevDisabled = page === 1;
+    const isNextDisabled = page === totalPages;
+    const isEmptyResults = total_count === 0;
 
     return (
       <ResultsWrapper>
-        <ResultWrapper>
-          {data.map((result, index) => {
-            console.log(result);
-            return <Result data={result} key={index} />;
-          })}
+        <ResultsAvailable>
+          {isLoading
+            ? "Searching for cars..."
+            : isEmptyResults
+            ? "No cars available"
+            : `${total_count} cars available`}
+        </ResultsAvailable>
+
+        <ResultWrapper isLoading={isLoading}>
+          {data.map((result, index) => (
+            <Result data={result} key={index} />
+          ))}
         </ResultWrapper>
-        <Pagination>
-          <PaginationButton
-            type="button"
-            onClick={() => onPageChange("prev")}
-            value="Previous"
-          />
-          <PaginationButton
-            type="button"
-            onClick={() => onPageChange("next")}
-            value="Next"
-          />
-        </Pagination>
+
+        {!isLoading && totalPages > 1 && (
+          <Pagination>
+            <PaginationText>
+              Viewing page {page} of {totalPages}
+            </PaginationText>
+            <PaginationButton
+              type="button"
+              onClick={() => onPageChange("prev")}
+              value="Previous"
+              disabled={isPrevDisabled}
+            />
+            <PaginationButton
+              type="button"
+              onClick={() => onPageChange("next")}
+              value="Next"
+              disabled={isNextDisabled}
+            />
+          </Pagination>
+        )}
       </ResultsWrapper>
     );
   }

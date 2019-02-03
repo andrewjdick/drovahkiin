@@ -6,10 +6,11 @@ import {
   MAX_DISTANCE_OPTIONS
 } from "components/Filter/constants";
 import {
+  FilterWrapper,
   FiltersWrapper,
   MultiFilterLabel,
-  FilterWrapper,
-  MultiFilterWrapper
+  MultiFilterWrapper,
+  MultiFilterInputs
 } from "./styles";
 
 export const Filters = ({ data, onFilterChange }) => (
@@ -27,30 +28,32 @@ export const Filters = ({ data, onFilterChange }) => (
 
     <MultiFilterWrapper>
       <MultiFilterLabel>Monthly budget</MultiFilterLabel>
-      <InputFilter
-        id="price_min"
-        label="Min"
-        type="number"
-        value={data.price_min}
-        onInput={event =>
-          onFilterChange({
-            key: "price_min",
-            value: Number(event.target.value)
-          })
-        }
-      />
-      <InputFilter
-        id="price_max"
-        label="Max"
-        type="number"
-        value={data.price_max}
-        onInput={event =>
-          onFilterChange({
-            key: "price_max",
-            value: Number(event.target.value)
-          })
-        }
-      />
+      <MultiFilterInputs>
+        <InputFilter
+          id="price_min"
+          label="Min"
+          type="number"
+          defaultValue={data.price_min}
+          onInput={event =>
+            onFilterChange({
+              key: "price_min",
+              value: Number(event.target.value)
+            })
+          }
+        />
+        <InputFilter
+          id="price_max"
+          label="Max"
+          type="number"
+          defaultValue={data.price_max}
+          onInput={event =>
+            onFilterChange({
+              key: "price_max",
+              value: Number(event.target.value)
+            })
+          }
+        />
+      </MultiFilterInputs>
     </MultiFilterWrapper>
 
     <FilterWrapper>
@@ -80,30 +83,32 @@ export const Filters = ({ data, onFilterChange }) => (
 
     <MultiFilterWrapper>
       <MultiFilterLabel>Number of seats</MultiFilterLabel>
-      <InputFilter
-        id="number_of_seats_min"
-        label="Min"
-        type="number"
-        value={data.number_of_seats_min}
-        onInput={event =>
-          onFilterChange({
-            key: "number_of_seats_min",
-            value: Number(event.target.value)
-          })
-        }
-      />
-      <InputFilter
-        id="number_of_seats_max"
-        label="Max"
-        type="number"
-        value={data.number_of_seats_max}
-        onInput={event =>
-          onFilterChange({
-            key: "number_of_seats_max",
-            value: Number(event.target.value)
-          })
-        }
-      />
+      <MultiFilterInputs>
+        <InputFilter
+          id="number_of_seats_min"
+          label="Min"
+          type="number"
+          defaultValue={data.number_of_seats_min}
+          onInput={event =>
+            onFilterChange({
+              key: "number_of_seats_min",
+              value: Number(event.target.value)
+            })
+          }
+        />
+        <InputFilter
+          id="number_of_seats_max"
+          label="Max"
+          type="number"
+          defaultValue={data.number_of_seats_max}
+          onInput={event =>
+            onFilterChange({
+              key: "number_of_seats_max",
+              value: Number(event.target.value)
+            })
+          }
+        />
+      </MultiFilterInputs>
     </MultiFilterWrapper>
   </FiltersWrapper>
 );

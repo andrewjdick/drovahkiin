@@ -1,22 +1,29 @@
 import styled from "styled-components";
 
+export const ResultsAvailable = styled.h1`
+  padding: 0.5em;
+  font-size: 2rem;
+  line-height: 2.5rem;
+`;
+
 export const ResultsWrapper = styled.section`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   flex: 1;
   padding: 0.5em;
   overflow: auto;
 `;
 
 export const ResultWrapper = styled.div`
-  flex: 1;
   display: flex;
   flex-wrap: wrap;
+  opacity: ${({ isLoading }) => (isLoading ? 0.5 : 1)};
+  transition: opacity 200ms ease-out;
 `;
 
 export const Pagination = styled.div`
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   padding: 1em;
@@ -26,4 +33,21 @@ export const Pagination = styled.div`
 export const PaginationButton = styled.input`
   margin: 1em;
   padding: 10px 20px;
+  appearance: none;
+  transition: all 400ms;
+
+  &:hover:not(:disabled) {
+    background-color: whitesmoke;
+    box-shadow: rgb(228, 227, 227) 0px 2px 4px;
+  }
+
+  &:disabled {
+    border: none;
+    opacity: 0.75;
+  }
+`;
+
+export const PaginationText = styled.span`
+  flex: 1 1 100%;
+  text-align: center;
 `;

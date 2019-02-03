@@ -7,6 +7,7 @@ export const StyledWrapper = styled.div`
 
 export const StyledLabel = styled.label`
   margin-bottom: 0.5em;
+  font-weight: bold;
 `;
 
 export const StyledInput = styled.input``;

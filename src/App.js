@@ -30,7 +30,7 @@ class App extends Component {
   };
 
   handleFilterChange = ({ key, value }) => {
-    this.setState({ [key]: value });
+    this.setState({ [key]: value, page: 1 });
   };
 
   render() {
@@ -46,6 +46,7 @@ class App extends Component {
                 this.handleFilterChange({ key, value })
               }
             />
+
             <Results
               data={this.state}
               onPageChange={direction => this.handlePageChange(direction)}

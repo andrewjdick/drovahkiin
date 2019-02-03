@@ -28,7 +28,6 @@ export const GlobalStyles = createGlobalStyle`
     width: 100%;
     height: 100%;
     
-
     ${media.tablet`
       font-size: 1.2rem;
 		  font-weight: 400;
@@ -45,11 +44,14 @@ export const AppWrapper = styled.main`
 `;
 
 export const Container = styled.div`
+  flex: 1;
   display: flex;
   flex-direction: column;
-  flex: 1;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
 
-  ${media.tablet`
+  ${media.desktop`
     flex-direction: row;
   `};
 `;
