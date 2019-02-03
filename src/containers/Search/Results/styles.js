@@ -53,3 +53,7 @@ export const PaginationText = styled.span`
   flex: 1 1 100%;
   text-align: center;
 `;
+
+export const Block = styled.div`
+  display: block;
+`;

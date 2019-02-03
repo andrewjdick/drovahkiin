@@ -8,7 +8,8 @@ import {
   ResultWrapper,
   PaginationText,
   PaginationButton,
-  Pagination
+  Pagination,
+  Block
 } from "./styles";
 
 export class Results extends React.Component {
@@ -52,17 +53,19 @@ export class Results extends React.Component {
 
     return (
       <ResultsWrapper>
-        <ResultsAvailable>
-          {isLoading
-            ? "Searching for cars..."
-            : total_count === 0
-            ? "No cars available"
-            : total_count === 1
-            ? `${total_count} car available`
-            : `${total_count} cars available`}
-        </ResultsAvailable>
+        <Block>
+          <ResultsAvailable>
+            {isLoading
+              ? "Searching for cars..."
+              : total_count === 0
+              ? "No cars available"
+              : total_count === 1
+              ? `${total_count} car available`
+              : `${total_count} cars available`}
+          </ResultsAvailable>
+        </Block>
 
-        <div>
+        <Block>
           <ResultWrapper isLoading={isLoading}>
             {data.map(
               (
@@ -86,26 +89,28 @@ export class Results extends React.Component {
               )
             )}
           </ResultWrapper>
-        </div>
+        </Block>
 
         {!isLoading && totalPages > 1 && (
-          <Pagination>
-            <PaginationText>
-              Viewing page {page} of {totalPages}
-            </PaginationText>
-            <PaginationButton
-              type="button"
-              onClick={() => onPageChange("prev")}
-              value="Previous"
-              disabled={page === 1}
-            />
-            <PaginationButton
-              type="button"
-              onClick={() => onPageChange("next")}
-              value="Next"
-              disabled={page === totalPages}
-            />
-          </Pagination>
+          <Block>
+            <Pagination>
+              <PaginationText>
+                Viewing page {page} of {totalPages}
+              </PaginationText>
+              <PaginationButton
+                type="button"
+                onClick={() => onPageChange("prev")}
+                value="Previous"
+                disabled={page === 1}
+              />
+              <PaginationButton
+                type="button"
+                onClick={() => onPageChange("next")}
+                value="Next"
+                disabled={page === totalPages}
+              />
+            </Pagination>
+          </Block>
         )}
       </ResultsWrapper>
     );
