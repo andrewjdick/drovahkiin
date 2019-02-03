@@ -54,3 +54,19 @@ export const MultiFilterInputs = styled.div`
     }
   }
 `;
+
+export const SubmitButton = styled.input`
+  appearance: none;
+  padding: 10px 20px;
+  transition: all 400ms;
+  border: 1px solid black;
+
+  &:hover {
+    background-color: whitesmoke;
+    box-shadow: rgb(228, 227, 227) 0px 2px 4px;
+  }
+
+  ${media.desktop`
+    display: none;
+  `};
+`;

@@ -11,7 +11,8 @@ import {
   FiltersWrapper,
   MultiFilterLabel,
   MultiFilterWrapper,
-  MultiFilterInputs
+  MultiFilterInputs,
+  SubmitButton
 } from "./styles";
 
 export const Filters = ({
@@ -23,6 +24,7 @@ export const Filters = ({
   number_of_seats_min,
   number_of_seats_max,
   onFilterChange,
+  onFilterSubmit,
   isMobileNavigationOpen
 }) => (
   <FiltersWrapper isMobileNavigationOpen={isMobileNavigationOpen}>
@@ -131,6 +133,10 @@ export const Filters = ({
         />
       </MultiFilterInputs>
     </MultiFilterWrapper>
+
+    <FilterWrapper>
+      <SubmitButton type="button" onClick={onFilterSubmit} value="Submit" />
+    </FilterWrapper>
   </FiltersWrapper>
 );
 
@@ -143,5 +149,6 @@ Filters.propTypes = {
   number_of_seats_min: number,
   number_of_seats_max: number,
   onFilterChange: func,
+  onFilterSubmit: func,
   isMobileNavigationOpen: bool
 };

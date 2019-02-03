@@ -22,7 +22,10 @@ class App extends Component {
           isMobileNavigationOpen={isMobileNavigationOpen}
           onMobileNavigationClick={this.handleMobileNavigationClick}
         />
-        <Search isMobileNavigationOpen={isMobileNavigationOpen} />
+        <Search
+          isMobileNavigationOpen={isMobileNavigationOpen}
+          handleFilterSubmit={this.handleMobileNavigationClick}
+        />
       </AppWrapper>
     );
   }

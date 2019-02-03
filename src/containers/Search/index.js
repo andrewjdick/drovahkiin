@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { bool } from "prop-types";
+import { bool, func } from "prop-types";
 import { Filters } from "./Filters";
 import { Results } from "./Results";
 import { Container } from "./styles";
@@ -37,7 +37,7 @@ export class Search extends Component {
   };
 
   render() {
-    const { isMobileNavigationOpen } = this.props;
+    const { isMobileNavigationOpen, handleFilterSubmit } = this.props;
     const {
       vehicle_make,
       price_min,
@@ -59,6 +59,7 @@ export class Search extends Component {
           number_of_seats_min={number_of_seats_min}
           number_of_seats_max={number_of_seats_max}
           isMobileNavigationOpen={isMobileNavigationOpen}
+          onFilterSubmit={handleFilterSubmit}
           onFilterChange={({ key, value }) =>
             this.handleFilterChange({ key, value })
           }
@@ -74,5 +75,6 @@ export class Search extends Component {
 }
 
 Search.propTypes = {
-  isMobileNavigationOpen: bool
+  isMobileNavigationOpen: bool,
+  handleFilterSubmit: func
 };
