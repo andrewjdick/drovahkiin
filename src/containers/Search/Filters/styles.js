@@ -7,6 +7,7 @@ export const FiltersWrapper = styled.aside`
   right: 0;
   bottom: 0;
   left: 0;
+  overflow-x: hidden;
   overflow-y: auto;
   padding: 1em;
   background-color: white;
@@ -16,12 +17,12 @@ export const FiltersWrapper = styled.aside`
     isMobileNavigationOpen ? "block" : "none"};
 
   ${media.desktop`
-    flex: 0 1 25%;
+    flex: 1 1 25%;
     display: flex;
     flex-direction: column;
     position: relative;
     min-height: 100%;
-    min-width: 360px;
+    max-width: 400px;
   `};
 `;
 

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { media } from "media.js";
 
 export const ResultsWrapper = styled.section`
   display: flex;
@@ -7,6 +8,10 @@ export const ResultsWrapper = styled.section`
   padding: 0.5em;
   overflow: scroll;
   -webkit-overflow-scrolling: touch;
+
+  ${media.desktop`
+    overflow: auto;
+  `};
 `;
 
 export const ResultsAvailable = styled.h1`
