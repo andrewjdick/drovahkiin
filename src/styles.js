@@ -5,23 +5,26 @@ import { media } from "media.js";
 export const GlobalStyles = createGlobalStyle`
   ${reset};
 
+  * {
+    box-sizing: border-box;
+  }
+
   html {
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: 100%;
-    overflow: hidden;
+    min-height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
   }
   
   body, div#root {
     flex: 1;
     display: flex;
     flex-direction: column;
-    font-family: sans-serif;
     font-size: 1rem;
 		font-weight: 400;
 		line-height: 1.2rem;
-    background-color: whitesmoke;
     width: 100%;
     height: 100%;
     
@@ -31,10 +34,6 @@ export const GlobalStyles = createGlobalStyle`
 		  font-weight: 400;
 		  line-height: 1.6rem;
     `}
-  }
-
-  h1, h2, h3, h4, h5, h6 {
-    font-family: serif;
   }
 
 `;
@@ -47,5 +46,10 @@ export const AppWrapper = styled.main`
 
 export const Container = styled.div`
   display: flex;
+  flex-direction: column;
   flex: 1;
+
+  ${media.tablet`
+    flex-direction: row;
+  `};
 `;

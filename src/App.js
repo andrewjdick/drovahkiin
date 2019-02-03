@@ -21,7 +21,7 @@ class App extends Component {
     number_of_seats_max: 8,
     start_date: "09/09/2018",
     vehicle_type: "Consumer",
-    vehicle_make: "Toyota"
+    vehicle_make: "Ford"
   };
 
   handlePageChange = direction => {

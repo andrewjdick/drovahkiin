@@ -1,6 +1,12 @@
 import React from "react";
 import { fetchRequest } from "api/fetchRequest";
-import { ResultsWrapper, Result } from "./styles";
+import { Result } from "components/Result";
+import {
+  ResultsWrapper,
+  ResultWrapper,
+  PaginationButton,
+  Pagination
+} from "./styles";
 
 export class Results extends React.Component {
   state = {
@@ -25,13 +31,12 @@ export class Results extends React.Component {
       url: "web/vehicles",
       method: "POST",
       body: vehicleData
-    }).then(response => {
-      console.log(response);
-      return this.setState({
-        metadata: response.metadata,
-        data: response.data
-      });
-    });
+    }).then(({ metadata, data }) =>
+      this.setState({
+        metadata: metadata,
+        data: data
+      })
+    );
 
   render() {
     const { onPageChange } = this.props;
@@ -39,17 +44,24 @@ export class Results extends React.Component {
 
     return (
       <ResultsWrapper>
-        <Result>{JSON.stringify(data)}</Result>
-        <input
-          type="button"
-          onClick={() => onPageChange("prev")}
-          value="Previous"
-        />
-        <input
-          type="button"
-          onClick={() => onPageChange("next")}
-          value="Next"
-        />
+        <ResultWrapper>
+          {data.map((result, index) => {
+            console.log(result);
+            return <Result data={result} key={index} />;
+          })}
+        </ResultWrapper>
+        <Pagination>
+          <PaginationButton
+            type="button"
+            onClick={() => onPageChange("prev")}
+            value="Previous"
+          />
+          <PaginationButton
+            type="button"
+            onClick={() => onPageChange("next")}
+            value="Next"
+          />
+        </Pagination>
       </ResultsWrapper>
     );
   }

@@ -1,13 +1,17 @@
 import styled from "styled-components";
+import { media } from "media.js";
 
 export const FiltersWrapper = styled.aside`
   flex: 0 1 25%;
   display: flex;
   flex-direction: column;
-  background-color: blue;
   padding: 1em;
-  height: 100%;
-  max-width: 350px;
+  min-height: 100%;
+
+  ${media.tablet`
+    flex: 1;
+    max-width: 350px;
+  `};
 `;
 
 export const FilterWrapper = styled.div`

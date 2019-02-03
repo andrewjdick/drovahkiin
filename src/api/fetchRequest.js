@@ -8,10 +8,6 @@ function onFetchResponse(response) {
   return response.json();
 }
 
-function onFetchSuccess(response) {
-  return response;
-}
-
 export function fetchRequest({ url, method = "GET", body = {}, headers = {} }) {
   if (!url) {
     throw new Error("url is undefined");
@@ -32,6 +28,5 @@ export function fetchRequest({ url, method = "GET", body = {}, headers = {} }) {
     headers: requestHeaders
   })
     .then(onFetchResponse)
-    .then(onFetchSuccess)
     .catch(error => console.error(error));
 }
