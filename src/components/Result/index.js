@@ -1,4 +1,5 @@
 import React from "react";
+import { string } from "prop-types";
 import {
   ResultContainer,
   ResultWrapper,
@@ -39,4 +40,12 @@ export const Result = ({
       </ResultWrapper>
     </ResultContainer>
   );
+};
+
+Result.propTypes = {
+  stock_image: string,
+  year: string,
+  vehicle_make: string,
+  vehicle_model: string,
+  engine_size_information: string
 };

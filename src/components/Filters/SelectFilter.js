@@ -1,4 +1,5 @@
 import React from "react";
+import { arrayOf, shape, string } from "prop-types";
 import { StyledWrapper, StyledLabel } from "./styles";
 
 export const SelectFilter = ({ label, options, selected, ...inputProps }) => (
@@ -13,3 +14,13 @@ export const SelectFilter = ({ label, options, selected, ...inputProps }) => (
     </select>
   </StyledWrapper>
 );
+
+SelectFilter.propTypes = {
+  label: string,
+  options: arrayOf(
+    shape({
+      value: string,
+      label: string
+    })
+  )
+};

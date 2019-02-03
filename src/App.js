@@ -18,12 +18,10 @@ class App extends Component {
     return (
       <AppWrapper>
         <GlobalStyles />
-
         <Header
           isMobileNavigationOpen={isMobileNavigationOpen}
           onMobileNavigationClick={this.handleMobileNavigationClick}
         />
-
         <Search isMobileNavigationOpen={isMobileNavigationOpen} />
       </AppWrapper>
     );

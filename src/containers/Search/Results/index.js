@@ -1,4 +1,5 @@
 import React from "react";
+import { func, object } from "prop-types";
 import { fetchRequest } from "api/fetchRequest";
 import { Result } from "components/Result";
 import {
@@ -59,29 +60,31 @@ export class Results extends React.Component {
             : `${total_count} cars available`}
         </ResultsAvailable>
 
-        <ResultWrapper isLoading={isLoading}>
-          {data.map(
-            (
-              {
-                stock_image,
-                year,
-                vehicle_make,
-                vehicle_model,
-                engine_size_information
-              },
-              index
-            ) => (
-              <Result
-                stock_image={stock_image}
-                vehicle_make={vehicle_make}
-                vehicle_model={vehicle_model}
-                engine_size_information={engine_size_information}
-                year={year}
-                key={index}
-              />
-            )
-          )}
-        </ResultWrapper>
+        <div>
+          <ResultWrapper isLoading={isLoading}>
+            {data.map(
+              (
+                {
+                  stock_image,
+                  year,
+                  vehicle_make,
+                  vehicle_model,
+                  engine_size_information
+                },
+                index
+              ) => (
+                <Result
+                  stock_image={stock_image}
+                  vehicle_make={vehicle_make}
+                  vehicle_model={vehicle_model}
+                  engine_size_information={engine_size_information}
+                  year={year}
+                  key={index}
+                />
+              )
+            )}
+          </ResultWrapper>
+        </div>
 
         {!isLoading && totalPages > 1 && (
           <Pagination>
@@ -106,3 +109,8 @@ export class Results extends React.Component {
     );
   }
 }
+
+Results.propTypes = {
+  data: object,
+  onPageChange: func
+};

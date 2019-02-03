@@ -1,4 +1,5 @@
 import React from "react";
+import { func, bool } from "prop-types";
 import { Logo, HamburgerIcon, CloseIcon } from "components/icons";
 import { MobileNav, HeaderWrapper, HeaderInnerWrapper } from "./styles";
 
@@ -16,3 +17,8 @@ export const Header = ({ isMobileNavigationOpen, onMobileNavigationClick }) => (
     </HeaderInnerWrapper>
   </HeaderWrapper>
 );
+
+Header.propTypes = {
+  isMobileNavigationOpen: bool,
+  onMobileNavigationClick: func
+};

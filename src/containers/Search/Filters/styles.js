@@ -7,6 +7,7 @@ export const FiltersWrapper = styled.aside`
   right: 0;
   bottom: 0;
   left: 0;
+  overflow-y: auto;
   padding: 1em;
   background-color: white;
   z-index: 1;
@@ -20,12 +21,16 @@ export const FiltersWrapper = styled.aside`
     flex-direction: column;
     position: relative;
     min-height: 100%;
+    min-width: 360px;
   `};
 `;
 
 export const FilterWrapper = styled.div`
   padding: 1em 0;
-  max-width: 50%;
+
+  ${media.tablet`
+    max-width: 50%;
+  `};
 `;
 
 export const MultiFilterWrapper = styled(FilterWrapper)`

@@ -1,4 +1,5 @@
 import React from "react";
+import { number } from "prop-types";
 
 export const Logo = ({ width, height }) => (
   <svg
@@ -35,6 +36,11 @@ export const Logo = ({ width, height }) => (
     />
   </svg>
 );
+
+Logo.propTypes = {
+  width: number,
+  height: number
+};
 
 Logo.defaultProps = {
   width: 140,

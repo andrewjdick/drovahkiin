@@ -1,10 +1,11 @@
 import React from "react";
-import { InputFilter, SelectFilter } from "components/Filter";
+import { string, func, bool } from "prop-types";
+import { InputFilter, SelectFilter } from "components/filters";
 import {
   VEHICLE_MAKE_OPTIONS,
   TRANSMISSION_OPTIONS,
   MAX_DISTANCE_OPTIONS
-} from "components/Filter/constants";
+} from "components/filters/constants";
 import {
   FilterWrapper,
   FiltersWrapper,
@@ -132,3 +133,15 @@ export const Filters = ({
     </MultiFilterWrapper>
   </FiltersWrapper>
 );
+
+Filters.propTypes = {
+  vehicle_make: string,
+  price_min: string,
+  price_max: string,
+  transmission: string,
+  max_distance: string,
+  number_of_seats_min: string,
+  number_of_seats_max: string,
+  onFilterChange: func,
+  isMobileNavigationOpen: bool
+};

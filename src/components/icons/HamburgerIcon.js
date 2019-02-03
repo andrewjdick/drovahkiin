@@ -1,4 +1,5 @@
 import React from "react";
+import { number } from "prop-types";
 
 export const HamburgerIcon = ({ width, height, ...props }) => (
   <svg
@@ -17,6 +18,11 @@ export const HamburgerIcon = ({ width, height, ...props }) => (
     <path d="M4 8 L28 8 M4 16 L28 16 M4 24 L28 24" />
   </svg>
 );
+
+HamburgerIcon.propTypes = {
+  width: number,
+  height: number
+};
 
 HamburgerIcon.defaultProps = {
   width: 32,

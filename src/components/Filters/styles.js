@@ -13,5 +13,5 @@ export const StyledLabel = styled.label`
 export const StyledInput = styled.input`
   border-style: solid;
   border-color: grey;
-  padding: 0.5em 1em;
+  text-indent: 5px;
 `;

@@ -9,7 +9,7 @@ export const ResultsWrapper = styled.section`
 `;
 
 export const ResultsAvailable = styled.h1`
-  padding: 0.5em;
+  padding: 0.5rem;
   font-size: 2rem;
   line-height: 2.5rem;
 `;

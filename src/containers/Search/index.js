@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { bool } from "prop-types";
 import { Filters } from "./Filters";
 import { Results } from "./Results";
 import { Container } from "./styles";
@@ -71,3 +72,7 @@ export class Search extends Component {
     );
   }
 }
+
+Search.propTypes = {
+  isMobileNavigationOpen: bool
+};

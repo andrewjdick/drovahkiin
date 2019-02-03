@@ -14,6 +14,7 @@ export const Container = styled.div`
 
   ${media.desktop`
     flex-direction: row;
+    flex-wrap: wrap;
     max-height: none;
     overflow: auto;
   `};
