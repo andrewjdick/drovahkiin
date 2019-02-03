@@ -37,11 +37,26 @@ export class Search extends Component {
 
   render() {
     const { isMobileNavigationOpen } = this.props;
+    const {
+      vehicle_make,
+      price_min,
+      price_max,
+      transmission,
+      max_distance,
+      number_of_seats_min,
+      number_of_seats_max
+    } = this.state;
 
     return (
       <Container>
         <Filters
-          data={this.state}
+          vehicle_make={vehicle_make}
+          price_min={price_min}
+          price_max={price_max}
+          transmission={transmission}
+          max_distance={max_distance}
+          number_of_seats_min={number_of_seats_min}
+          number_of_seats_max={number_of_seats_max}
           isMobileNavigationOpen={isMobileNavigationOpen}
           onFilterChange={({ key, value }) =>
             this.handleFilterChange({ key, value })

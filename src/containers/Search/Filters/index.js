@@ -13,13 +13,23 @@ import {
   MultiFilterInputs
 } from "./styles";
 
-export const Filters = ({ data, onFilterChange, isMobileNavigationOpen }) => (
+export const Filters = ({
+  vehicle_make,
+  price_min,
+  price_max,
+  transmission,
+  max_distance,
+  number_of_seats_min,
+  number_of_seats_max,
+  onFilterChange,
+  isMobileNavigationOpen
+}) => (
   <FiltersWrapper isMobileNavigationOpen={isMobileNavigationOpen}>
     <FilterWrapper>
       <SelectFilter
         label="Vehicle Make"
         options={VEHICLE_MAKE_OPTIONS}
-        selected={data.vehicle_make}
+        selected={vehicle_make}
         onChange={event =>
           onFilterChange({
             key: "vehicle_make",
@@ -37,7 +47,7 @@ export const Filters = ({ data, onFilterChange, isMobileNavigationOpen }) => (
           label="Min"
           type="number"
           min="0"
-          defaultValue={data.price_min}
+          defaultValue={price_min}
           onInput={event =>
             onFilterChange({
               key: "price_min",
@@ -50,7 +60,7 @@ export const Filters = ({ data, onFilterChange, isMobileNavigationOpen }) => (
           label="Max"
           type="number"
           min="1"
-          defaultValue={data.price_max}
+          defaultValue={price_max}
           onInput={event =>
             onFilterChange({
               key: "price_max",
@@ -65,7 +75,7 @@ export const Filters = ({ data, onFilterChange, isMobileNavigationOpen }) => (
       <SelectFilter
         label="Transmission"
         options={TRANSMISSION_OPTIONS}
-        selected={data.transmission}
+        selected={transmission}
         onChange={event =>
           onFilterChange({
             key: "transmission",
@@ -79,7 +89,7 @@ export const Filters = ({ data, onFilterChange, isMobileNavigationOpen }) => (
       <SelectFilter
         label="Max Distance"
         options={MAX_DISTANCE_OPTIONS}
-        selected={data.max_distance}
+        selected={max_distance}
         onChange={event =>
           onFilterChange({
             key: "max_distance",
@@ -97,7 +107,7 @@ export const Filters = ({ data, onFilterChange, isMobileNavigationOpen }) => (
           label="Min"
           type="number"
           min="0"
-          defaultValue={data.number_of_seats_min}
+          defaultValue={number_of_seats_min}
           onInput={event =>
             onFilterChange({
               key: "number_of_seats_min",
@@ -110,7 +120,7 @@ export const Filters = ({ data, onFilterChange, isMobileNavigationOpen }) => (
           label="Max"
           type="number"
           min="1"
-          defaultValue={data.number_of_seats_max}
+          defaultValue={number_of_seats_max}
           onInput={event =>
             onFilterChange({
               key: "number_of_seats_max",

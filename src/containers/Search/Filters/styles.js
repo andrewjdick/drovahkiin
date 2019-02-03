@@ -12,7 +12,7 @@ export const FiltersWrapper = styled.aside`
   z-index: 1;
 
   display: ${({ isMobileNavigationOpen }) =>
-    isMobileNavigationOpen ? "none" : "block"};
+    isMobileNavigationOpen ? "block" : "none"};
 
   ${media.desktop`
     flex: 0 1 25%;
