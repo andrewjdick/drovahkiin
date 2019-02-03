@@ -1,5 +1,5 @@
 import React from "react";
-import { string, func, bool } from "prop-types";
+import { string, func, number, bool } from "prop-types";
 import { InputFilter, SelectFilter } from "components/filters";
 import {
   VEHICLE_MAKE_OPTIONS,
@@ -136,12 +136,12 @@ export const Filters = ({
 
 Filters.propTypes = {
   vehicle_make: string,
-  price_min: string,
-  price_max: string,
+  price_min: number,
+  price_max: number,
   transmission: string,
-  max_distance: string,
-  number_of_seats_min: string,
-  number_of_seats_max: string,
+  max_distance: number,
+  number_of_seats_min: number,
+  number_of_seats_max: number,
   onFilterChange: func,
   isMobileNavigationOpen: bool
 };
