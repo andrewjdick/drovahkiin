@@ -8,20 +8,16 @@ import {
   CarModel
 } from "./styles";
 
-export const Result = ({ data }) => {
-  const {
-    stock_image,
-    year,
-    vehicle_make,
-    vehicle_model,
-    engine_size_information
-  } = data;
-
-  const bgImage = stock_image ? stock_image.image_url : undefined;
-
+export const Result = ({
+  stock_image,
+  year,
+  vehicle_make,
+  vehicle_model,
+  engine_size_information
+}) => {
   return (
     <ResultContainer>
-      <ResultWrapper bgImage={bgImage}>
+      <ResultWrapper bgImage={stock_image ? stock_image.image_url : undefined}>
         <CarInfo>
           {/**
            * I found the API for the monnthly price to be confusing.

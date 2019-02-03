@@ -48,24 +48,39 @@ export class Results extends React.Component {
     } = this.state;
 
     const totalPages = Math.ceil(total_count / per_page);
-    const isPrevDisabled = page === 1;
-    const isNextDisabled = page === totalPages;
-    const isEmptyResults = total_count === 0;
 
     return (
       <ResultsWrapper>
         <ResultsAvailable>
           {isLoading
             ? "Searching for cars..."
-            : isEmptyResults
+            : total_count === 0
             ? "No cars available"
             : `${total_count} cars available`}
         </ResultsAvailable>
 
         <ResultWrapper isLoading={isLoading}>
-          {data.map((result, index) => (
-            <Result data={result} key={index} />
-          ))}
+          {data.map(
+            (
+              {
+                stock_image,
+                year,
+                vehicle_make,
+                vehicle_model,
+                engine_size_information
+              },
+              index
+            ) => (
+              <Result
+                stock_image={stock_image}
+                vehicle_make={vehicle_make}
+                vehicle_model={vehicle_model}
+                engine_size_information={engine_size_information}
+                year={year}
+                key={index}
+              />
+            )
+          )}
         </ResultWrapper>
 
         {!isLoading && totalPages > 1 && (
@@ -77,13 +92,13 @@ export class Results extends React.Component {
               type="button"
               onClick={() => onPageChange("prev")}
               value="Previous"
-              disabled={isPrevDisabled}
+              disabled={page === 1}
             />
             <PaginationButton
               type="button"
               onClick={() => onPageChange("next")}
               value="Next"
-              disabled={isNextDisabled}
+              disabled={page === totalPages}
             />
           </Pagination>
         )}

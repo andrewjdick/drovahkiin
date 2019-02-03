@@ -14,16 +14,16 @@ export const ResultContainer = styled.div`
 `;
 
 export const ResultWrapper = styled.div`
+  flex: 1 0 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: space-between;
-  flex: 1 0 100%;
+  align-items: center;
+  height: 250px;
   margin: 0.5em;
   padding: 0.5em;
-  height: 250px;
-  transition: all 500ms cubic-bezier(0.455, 0.03, 0.515, 0.955) 0s;
   cursor: pointer;
+  transition: all 500ms cubic-bezier(0.455, 0.03, 0.515, 0.955) 0s;
   background-color: rgb(245, 245, 245);
 
   ${({ bgImage }) => css`
