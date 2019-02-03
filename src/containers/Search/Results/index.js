@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component, createRef } from "react";
 import { func, object } from "prop-types";
 import { debounce } from "throttle-debounce";
 import { fetchRequest } from "api/fetchRequest";
@@ -13,7 +13,7 @@ import {
   Block
 } from "./styles";
 
-export class Results extends React.Component {
+export class Results extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -22,6 +22,7 @@ export class Results extends React.Component {
       isLoading: true
     };
     this.getFilteredVehiclesDebounced = debounce(500, this.getFilteredVehicles);
+    this.scrollRef = createRef();
   }
 
   componentDidMount() {
@@ -45,7 +46,9 @@ export class Results extends React.Component {
       method: "POST",
       body: vehicleData
     }).then(({ metadata, data }) =>
-      this.setState({ metadata, data, isLoading: false })
+      this.setState({ metadata, data, isLoading: false }, () => {
+        this.scrollRef.current.scrollTo(0, 0);
+      })
     );
 
   render() {
@@ -59,7 +62,7 @@ export class Results extends React.Component {
     const totalPages = Math.ceil(total_count / per_page);
 
     return (
-      <ResultsWrapper>
+      <ResultsWrapper ref={this.scrollRef}>
         <Block>
           <ResultsAvailable>
             {isLoading
