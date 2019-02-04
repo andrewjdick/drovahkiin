@@ -1,5 +1,6 @@
 import React from "react";
 import { string, shape } from "prop-types";
+import resultFallbackImage from "assets/images/resultFallback.png";
 import {
   ResultContainer,
   ResultWrapper,
@@ -19,12 +20,14 @@ export const Result = ({
   <ResultContainer>
     <ResultWrapper
       bgImage={
-        stock_image && stock_image.image_url ? stock_image.image_url : undefined
+        stock_image && stock_image.image_url
+          ? stock_image.image_url
+          : resultFallbackImage
       }
     >
       <CarInfo>
         {/**
-         * I found the API for the monnthly price to be confusing.
+         * I found the API for the monthly price to be confusing.
          * With no obvious value I've hard coded it in for now.
          * I assume it would be something like the total cost / number of months
          **/}
